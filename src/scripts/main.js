@@ -10,9 +10,21 @@ fetch(endpoint)
     return res.json()
   })
   .then(data => {
-    let rates = data.rates
-    console.log(rates)
-    let arrOfRatesObj = Object.entries(rates).map(([key, value]) => `<li class='currency'>${key}<span class='currencyValue'> - ${value}</span></li>`)
+    let rates = data.rates, currency = data.target, currencySign
+    
+    switch (currency) {
+      case 'GBP':
+        currencySign = '£'
+        break
+      case 'USD':
+        currencySign = '$'
+        break
+      case 'EUR':
+        currencySign = '€'
+        break
+    }
+
+    let arrOfRatesObj = Object.entries(rates).map(([key, value]) => `<li class='currency'>${key}<span class='currencyValue'> - ${currencySign} ${value}</span></li>`)
     root.innerHTML = `<ul class='cryptoList'>${arrOfRatesObj}</ul>`    
   })
   .catch(error => {
