@@ -1,5 +1,7 @@
 let endpoint = 'http://api.coinlayer.com/api/live?access_key=1b560d83dbab812e2781a03d1d38eb32&target=GBP&symbols=BTC,ETH,BCH,LTC,DASH,XRP,XLM'
 
+const root = document.getElementById('root')
+
 fetch(endpoint)
   .then(res => {
     if (!res.ok) {
@@ -9,27 +11,10 @@ fetch(endpoint)
   })
   .then(data => {
     let rates = data.rates
-    let arrOfRates = Object.keys(rates).map(key => {
-      return [key, rates[key]]
-    })
-    const root = document.getElementById('root')
-    root.innerHTML = arrOfRates
+    console.log(rates)
+    let arrOfRatesObj = Object.entries(rates).map(([key, value]) => `<li class='currency'>${key}<span class='currencyValue'> - ${value}</span></li>`)
+    root.innerHTML = `<ul class='cryptoList'>${arrOfRatesObj}</ul>`    
   })
   .catch(error => {
     console.log('error is', error)
   })
-
-/**
- * Creates a dynamic list which takes in an array
- */
-createList = array => {
-  let list = document.createElement('ul')
-
-  for (let i = 0; i < array.length; i++) {
-    let listItem = document.createElement('li')
-
-    listItem.appendChild(document.createTextNode(array[i]))
-    list.appendChild(listItem)
-  }
-  return list
-}
