@@ -21,7 +21,23 @@ fetch(endpoint)
 
     let listItem = Object.entries(rates).map(([key, value]) => `<li class='currency'>${key}<span class='currencyValue'> - ${currencySign}${value.toFixed(2)}</span></li>`)
     root.innerHTML = `<ul class='cryptoList'>${listItem}</ul>`
+    console.log(root)
+
+    /**
+     * Alternative method to display the listItems
+     * However this uses multiple ul elements to display the data
+     */
+
+    // let output = Object.entries(rates).map(([key, value]) => ({key,value}))
+    // return output.map(crytpo => {
+    //   let li = createNode('li'), ul = createNode('ul')
+    //   li.innerHTML = `${crytpo.key} - ${currencySign}${crytpo.value.toFixed(2)}`
+    //   append(ul, li), append(root, ul)
+    // })
   })
   .catch(error => {
     console.log('error is', error)
   })
+
+// createNode = (element) => document.createElement(element)
+// append = (parent, el) => parent.appendChild(el)
