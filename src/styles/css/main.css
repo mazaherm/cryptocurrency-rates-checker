@@ -1,2 +1,10 @@
-h1 {
-  color: red; }
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap");
+.cryptoList {
+  list-style-type: none; }
+  .cryptoList .currency {
+    font-weight: 600; }
+    .cryptoList .currency .currencyValue {
+      font-weight: 100; }
+
+* {
+  font-family: 'Open Sans', sans-serif; }
