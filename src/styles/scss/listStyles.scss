@@ -1,0 +1,11 @@
+.cryptoList {
+  list-style-type: none;
+
+  .currency {
+    font-weight: 600;
+
+    .currencyValue {
+      font-weight: 100;
+    }
+  }
+}
